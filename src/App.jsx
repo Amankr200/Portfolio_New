@@ -909,15 +909,6 @@ const projectList = [
     emoji: "🏆",
   },
   {
-    title: "SafaiSetu",
-    desc: "Civic issue reporting platform for Delhi with real-time tracking, analytics dashboard, and Firebase auth.",
-    tags: ["React", "FastAPI", "Firebase", "SQLite"],
-    github: "#",
-    live: "#",
-    color: "#6366f1",
-    emoji: "🏙️",
-  },
-  {
     title: "GRC Guard",
     desc: "Enterprise security platform with JWT authentication, RBAC, and a real-time compliance dashboard.",
     tags: ["React.js", "Node.js", "MongoDB", "JWT", "Framer Motion"],
