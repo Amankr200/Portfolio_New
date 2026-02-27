@@ -948,6 +948,20 @@ const projectList = [
     color: "#b5bacf",
     emoji: "✈️",
   },
+  {
+    title: "Structify DSA Visualizer",
+    desc: "Interactive visualizer for Data Structures and Algorithms with step-by-step animations and explanations.",
+    tags: [
+      "Tailwind CSS",
+      " React.js",
+      " Gemini API",
+      "JavaScript Algorithm Implementations",
+    ],
+    github: "https://github.com/Amankr200/structify-dsa-visualizer",
+    live: "https://structify-dsa-visualizer.netlify.app/",
+    color: "#c3a999",
+    emoji: "📊",
+  },
 ];
 
 const HorizontalProjects = () => {
