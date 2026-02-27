@@ -264,14 +264,18 @@ const Navbar = () => {
         "blog",
         "contact",
       ];
+      let activeSection = "";
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= 200) {
-          setActive(id);
-          break;
+          activeSection = id;
         }
       }
-      if (window.scrollY < 200) setActive("");
+      if (activeSection) {
+        setActive(activeSection);
+      } else if (window.scrollY < 200) {
+        setActive("");
+      }
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
