@@ -258,6 +258,7 @@ const Navbar = () => {
       const sections = [
         "contact",
         "education",
+        "blog",
         "hackathons",
         "projects",
         "skills",
@@ -281,6 +282,7 @@ const Navbar = () => {
     { label: "Skills", id: "skills" },
     { label: "Projects", id: "projects" },
     { label: "Hackathons", id: "hackathons" },
+    { label: "Blog", id: "blog" },
     { label: "Education", id: "education" },
     { label: "Contact", id: "contact" },
   ];
@@ -1128,6 +1130,36 @@ const hackathonData = [
   },
 ];
 
+const blogData = [
+  {
+    id: 1,
+    title: "Getting Started with React",
+    date: "February 2026",
+    description:
+      "A beginner's guide to React fundamentals and building your first component.",
+    link: "https://amankumardev.hashnode.dev/getting-started-with-react",
+    tags: ["React", "JavaScript"],
+  },
+  {
+    id: 2,
+    title: "Full Stack Development Tips",
+    date: "February 2026",
+    description:
+      "Best practices for building scalable full-stack applications with modern tools.",
+    link: "https://amankumardev.hashnode.dev/full-stack-development-tips",
+    tags: ["Full Stack", "Node.js"],
+  },
+  {
+    id: 3,
+    title: "Mastering Data Structures & Algorithms",
+    date: "February 2026",
+    description:
+      "Essential DSA concepts every developer should know for interviews and real-world problems.",
+    link: "https://amankumardev.hashnode.dev/mastering-data-structures-algorithms",
+    tags: ["DSA", "C++"],
+  },
+];
+
 const Hackathons = () => (
   <section id="hackathons" className="section section--dark">
     <div className="container">
@@ -1185,6 +1217,57 @@ const Hackathons = () => (
           }}
         ></p>
       </Reveal>
+    </div>
+  </section>
+);
+
+/* ═══════════════════════════════════════════
+   BLOG
+   ═══════════════════════════════════════════ */
+const Blog = () => (
+  <section id="blog" className="section">
+    <div className="container">
+      <Reveal>
+        <p className="section-tag">
+          <Braces size={14} /> blog_posts
+        </p>
+        <h2 className="section-title">Latest Articles</h2>
+        <p className="section-sub">
+          Thoughts on web development, full-stack engineering, and technology.
+          Read more on Hashnode.
+        </p>
+      </Reveal>
+
+      <div className="blog-grid">
+        {blogData.map((blog, i) => (
+          <Reveal key={blog.id} delay={i * 0.06}>
+            <motion.a
+              href={blog.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="blog-card"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="blog-header">
+                <h3 className="blog-title">{blog.title}</h3>
+                <ArrowUpRight size={18} className="blog-icon" />
+              </div>
+              <p className="blog-description">{blog.description}</p>
+              <div className="blog-meta">
+                <span className="blog-date">{blog.date}</span>
+                <div className="blog-tags">
+                  {blog.tags.map((tag) => (
+                    <span key={tag} className="blog-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.a>
+          </Reveal>
+        ))}
+      </div>
     </div>
   </section>
 );
@@ -1355,6 +1438,7 @@ export default function App() {
       <HorizontalProjects />
       <Education />
       <Hackathons />
+      <Blog />
       <Contact />
       <Footer />
     </>
