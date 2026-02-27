@@ -617,9 +617,17 @@ const About = () => {
                 in love with coding during first year. Since then, I've built
                 full-stack apps, contributed to open source, grinded 500+ DSA
                 problems, and pulled way too many all-nighters. 🌙
+                <br />
+                <br />
+                I enjoy turning ideas into real, scalable products that solve
+                real-world problems. From designing clean UIs to optimizing
+                backend performance, I love working across the entire stack.
+                <br />
+                <br />
               </p>
+
               <p className="intro-highlight">
-                🚀 Currently seeking <strong>SDE / Full Stack roles</strong> —
+                Currently seeking <strong>SDE / Full Stack roles</strong> —
                 available June 2026
               </p>
             </TiltCard>
@@ -674,7 +682,7 @@ const About = () => {
             <TiltCard className="bento-cell h-full cell-stats-inner">
               <div className="stat-block">
                 <span className="stat-number">
-                  <Counter target="50" suffix="+" />
+                  <Counter target="30" suffix="+" />
                 </span>
                 <span className="stat-text">Projects</span>
               </div>
@@ -875,8 +883,8 @@ const projectList = [
     title: "Collab Docs",
     desc: "Google Docs-style real-time collaborative editor with live cursors, version history, and conflict resolution.",
     tags: ["React", "WebSocket", "Node.js", "Redis"],
-    github: "#",
-    live: "#",
+    github: "https://github.com/Amankr200/SyncSphereDocs",
+    live: "https://sync-sphere-docs.vercel.app/",
     color: "#f59e0b",
     emoji: "📝",
   },
@@ -893,8 +901,8 @@ const projectList = [
       "Axios",
       "Node-cron",
     ],
-    github: "#",
-    live: "#",
+    github: "https://github.com/Amankr200/CodeBoard",
+    live: "https://codeboard-silk.vercel.app/",
     color: "#3b82f6",
     emoji: "🏆",
   },
@@ -993,7 +1001,7 @@ const HorizontalProjects = () => {
           {/* See More CTA card */}
           <div className="hscroll-card hscroll-cta-card">
             <a
-              href="https://github.com/yourgithub?tab=repositories"
+              href="https://github.com/Amankr200?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
               className="hscroll-cta-inner"
@@ -1086,71 +1094,37 @@ const hackathonData = [
     id: 1,
     name: "Smart India Hackathon",
     date: "Sept 2024",
-    award: "🏆 Winner",
-    img: "/hackathons/sih.jpg",
+    award: "🏆 College level Winner",
+    img: "/hackathons/sih.jpeg",
   },
   {
     id: 2,
-    name: "HackWithInfy",
-    date: "Aug 2024",
+    name: "IgNITion Hack",
+    date: "April 2025",
     award: "🥈 Top 10",
-    img: "/hackathons/hackinfy.jpg",
+    img: "/hackathons/IgNITionHack.jpeg",
   },
   {
     id: 3,
-    name: "MLH Global Hack",
-    date: "June 2024",
+    name: "NEXATHON",
+    date: "April 2025",
     award: "🏅 Finalist",
-    img: "/hackathons/mlh.jpg",
+    img: "/hackathons/nexathon.jpeg",
   },
-  {
-    id: 4,
-    name: "ETHIndia",
-    date: "Dec 2023",
-    award: "⭐ Participant",
-    img: "/hackathons/ethindia.jpg",
-  },
-  {
-    id: 5,
-    name: "Devfolio Hackathon",
-    date: "Oct 2023",
-    award: "🏆 Winner",
-    img: "/hackathons/devfolio.jpg",
-  },
-  {
-    id: 6,
-    name: "HackCBS",
-    date: "Nov 2023",
-    award: "🥉 3rd Place",
-    img: "/hackathons/hackcbs.jpg",
-  },
+
   {
     id: 7,
-    name: "Code for Good",
-    date: "Jul 2023",
+    name: "YOUTH4FUTURE",
+    date: "AUG 2024",
     award: "🏅 Finalist",
-    img: "/hackathons/codeforgood.jpg",
+    img: "/hackathons/YOUTH4FUTURE.jpeg",
   },
   {
     id: 8,
     name: "Google Solution Challenge",
-    date: "Mar 2023",
-    award: "⭐ Top 100",
-    img: "/hackathons/google.jpg",
-  },
-  {
-    id: 9,
-    name: "Internal College Hackathon",
-    date: "Feb 2023",
-    award: "🏆 Winner",
-    img: "/hackathons/college.jpg",
-  },
-  {
-    id: 10,
-    name: "Hack the Mountains",
-    date: "Jan 2023",
+    date: "AUG 2025",
     award: "⭐ Participant",
-    img: "/hackathons/htm.jpg",
+    img: "/hackathons/googleSolution.jpeg",
   },
 ];
 
@@ -1163,8 +1137,8 @@ const Hackathons = () => (
         </p>
         <h2 className="section-title">Hackathon Memories</h2>
         <p className="section-sub">
-          10+ hackathons, countless sleepless nights, and some trophies along
-          the way 🏆
+          5+ hackathons, countless sleepless nights, and some trophies along the
+          way 🏆
         </p>
       </Reveal>
 
@@ -1209,20 +1183,7 @@ const Hackathons = () => (
             fontSize: "0.85rem",
             color: "var(--text-muted)",
           }}
-        >
-          📁 Place your hackathon photos in{" "}
-          <code
-            style={{
-              fontFamily: "var(--mono)",
-              background: "var(--bg-card)",
-              padding: "2px 8px",
-              borderRadius: "6px",
-              border: "1px solid var(--border)",
-            }}
-          >
-            /public/hackathons/
-          </code>
-        </p>
+        ></p>
       </Reveal>
     </div>
   </section>
