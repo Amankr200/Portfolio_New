@@ -928,20 +928,61 @@ const projectList = [
   },
 
   {
-    title: "Secure Env Check",
-    desc: "npm package that validates env vars, catches weak secrets, and blocks accidental .env commits.",
-    tags: ["Node.js", "npm", "CLI", "Security"],
-    github: "#",
-    live: "#",
+    title: "FinFolio ",
+    desc: "A Personal Finance Tracker",
+    tags: [
+      "Tailwind CSS",
+      " React.js",
+      " Firebase (Authentication & Firestore)",
+      "Chart.js",
+    ],
+    github:
+      "https://github.com/Amankr200/FinFolio---Your-Presonal-Finance-Webapp",
+    live: "https://finfolio.netlify.app/",
     color: "#ec4899",
-    emoji: "🔒",
+    emoji: "💰",
   },
 ];
 
 const HorizontalProjects = () => {
   const containerRef = useRef(null);
+  const trackRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
   const { scrollYProgress } = useScroll({ target: containerRef });
   const x = useTransform(scrollYProgress, [0, 1], ["5%", "-82%"]);
+
+  const checkScroll = () => {
+    if (trackRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = trackRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  const scroll = (direction) => {
+    if (trackRef.current) {
+      const scrollAmount = 400;
+      trackRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+      setTimeout(checkScroll, 300);
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    const track = trackRef.current;
+    if (track) {
+      track.addEventListener("scroll", checkScroll);
+      window.addEventListener("resize", checkScroll);
+      return () => {
+        track.removeEventListener("scroll", checkScroll);
+        window.removeEventListener("resize", checkScroll);
+      };
+    }
+  }, []);
 
   const memoizedProjects = useMemo(
     () =>
@@ -992,33 +1033,59 @@ const HorizontalProjects = () => {
           </Reveal>
         </div>
 
-        <motion.div
-          className="hscroll-track"
-          style={{ x }}
-          initial={false}
-          transition={{ duration: 0 }} /* Instant transform update */
-        >
-          {memoizedProjects}
+        <div className="hscroll-container">
+          <button
+            className={`hscroll-nav hscroll-nav--left ${
+              !canScrollLeft ? "hscroll-nav--disabled" : ""
+            }`}
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            aria-label="Scroll left"
+          >
+            <ChevronRight size={20} />
+          </button>
 
-          {/* See More CTA card */}
-          <div className="hscroll-card hscroll-cta-card">
-            <a
-              href="https://github.com/Amankr200?tab=repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hscroll-cta-inner"
+          <div className="hscroll-track-wrapper" ref={trackRef}>
+            <motion.div
+              className="hscroll-track"
+              style={{ x }}
+              initial={false}
+              transition={{ duration: 0 }}
             >
-              <div className="hscroll-cta-icon">
-                <ArrowUpRight size={32} />
+              {memoizedProjects}
+
+              {/* See More CTA card */}
+              <div className="hscroll-card hscroll-cta-card">
+                <a
+                  href="https://github.com/Amankr200?tab=repositories"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hscroll-cta-inner"
+                >
+                  <div className="hscroll-cta-icon">
+                    <ArrowUpRight size={32} />
+                  </div>
+                  <h3 className="hcard-title">See All Projects</h3>
+                  <p className="hcard-desc">View my full portfolio on GitHub</p>
+                  <span className="hscroll-cta-link">
+                    <Github size={16} /> GitHub <ChevronRight size={14} />
+                  </span>
+                </a>
               </div>
-              <h3 className="hcard-title">See All Projects</h3>
-              <p className="hcard-desc">View my full portfolio on GitHub</p>
-              <span className="hscroll-cta-link">
-                <Github size={16} /> GitHub <ChevronRight size={14} />
-              </span>
-            </a>
+            </motion.div>
           </div>
-        </motion.div>
+
+          <button
+            className={`hscroll-nav hscroll-nav--right ${
+              !canScrollRight ? "hscroll-nav--disabled" : ""
+            }`}
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -1277,10 +1344,37 @@ const Blog = () => (
    ═══════════════════════════════════════════ */
 const Contact = () => {
   const [sent, setSent] = useState(false);
-  const submit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const submit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    setLoading(true);
+    setError("");
+
+    const formData = new FormData(e.target);
+    formData.append("access_key", "29e17af6-42f4-435d-acf9-51d33c02814a");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSent(true);
+        e.target.reset();
+        setTimeout(() => setSent(false), 3000);
+      } else {
+        setError("Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      setError("Error sending message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -1303,26 +1397,41 @@ const Contact = () => {
               <div className="form-row">
                 <div className="form-field">
                   <label>Name</label>
-                  <input type="text" placeholder="John Doe" required />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                  />
                 </div>
                 <div className="form-field">
                   <label>Email</label>
-                  <input type="email" placeholder="john@example.com" required />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    required
+                  />
                 </div>
               </div>
               <div className="form-field">
                 <label>Message</label>
                 <textarea
+                  name="message"
                   rows="5"
                   placeholder="Hey, loved your projects! Let's connect..."
                   required
                 ></textarea>
               </div>
+              {error && <p className="form-error">{error}</p>}
               <button
                 type="submit"
                 className={`submit-btn ${sent ? "submit-btn--sent" : ""}`}
+                disabled={loading}
               >
-                {sent ? (
+                {loading ? (
+                  "Sending..."
+                ) : sent ? (
                   "✓ Sent!"
                 ) : (
                   <>
@@ -1349,7 +1458,7 @@ const Contact = () => {
                 >
                   <Linkedin size={16} /> linkedin.com/in/aman-kumar-india
                 </a>
-                <a href="#https://github.com/Amankr200" className="aside-link">
+                <a href="https://github.com/Amankr200" className="aside-link">
                   <Github size={16} /> github.com/Amankr200
                 </a>
               </TiltCard>
@@ -1380,14 +1489,11 @@ const Footer = () => (
         ☕ & late nights
       </p>
       <div className="footer-links">
-        <a href="#">
+        <a href="https://github.com/Amankr200">
           <Github size={18} />
         </a>
-        <a href="#">
+        <a href="https://www.linkedin.com/in/aman-kumar-india/">
           <Linkedin size={18} />
-        </a>
-        <a href="#">
-          <Twitter size={18} />
         </a>
       </div>
       <small>© 2026 • React + Framer Motion</small>
