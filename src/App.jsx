@@ -256,13 +256,13 @@ const Navbar = () => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
       const sections = [
-        "contact",
-        "education",
-        "blog",
-        "hackathons",
-        "projects",
-        "skills",
         "about",
+        "skills",
+        "projects",
+        "education",
+        "hackathons",
+        "blog",
+        "contact",
       ];
       for (const id of sections) {
         const el = document.getElementById(id);
