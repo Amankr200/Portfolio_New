@@ -920,9 +920,9 @@ const projectList = [
   {
     title: "GRC Guard",
     desc: "Enterprise security platform with JWT authentication, RBAC, and a real-time compliance dashboard.",
-    tags: ["Next.js", "Node.js", "MongoDB", "JWT"],
-    github: "#",
-    live: "#",
+    tags: ["React.js", "Node.js", "MongoDB", "JWT", "Framer Motion"],
+    github: "https://github.com/Amankr200/GRC-Guard",
+    live: "https://grc-guard.vercel.app/landing",
     color: "#10b981",
     emoji: "🔐",
   },
@@ -941,6 +941,21 @@ const projectList = [
     live: "https://finfolio.netlify.app/",
     color: "#ec4899",
     emoji: "💰",
+  },
+  {
+    title: "AI Travel Planner",
+    desc: "Your personal trip planner and travel curator, creating custom itineraries tailored to your interests and budget.",
+    tags: [
+      "Tailwind CSS",
+      " React.js",
+      " Gemini API",
+      "Google Places API",
+      "Google Authentication",
+    ],
+    github: "https://github.com/Amankr200/AI-TRAVEL-PLANNER",
+    live: "https://ai-travel-planner-aman.netlify.app/",
+    color: "#b5bacf",
+    emoji: "✈️",
   },
 ];
 
