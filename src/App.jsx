@@ -42,6 +42,7 @@ import {
   Trophy,
   Camera,
   ImageIcon,
+  Briefcase,
 } from "lucide-react";
 import "./App.css";
 
@@ -251,14 +252,17 @@ const Counter = ({ target, suffix = "" }) => {
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
+  const isScrolling = useRef(false);
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
+      if (isScrolling.current) return;
       const sections = [
         "about",
         "skills",
         "projects",
+        "experience",
         "education",
         "hackathons",
         "blog",
@@ -285,9 +289,10 @@ const Navbar = () => {
     { label: "About", id: "about" },
     { label: "Skills", id: "skills" },
     { label: "Projects", id: "projects" },
+    { label: "Experience", id: "experience" },
+    { label: "Education", id: "education" },
     { label: "Hackathons", id: "hackathons" },
     { label: "Blog", id: "blog" },
-    { label: "Education", id: "education" },
     { label: "Contact", id: "contact" },
   ];
 
@@ -309,6 +314,18 @@ const Navbar = () => {
               <a
                 href={`#${l.id}`}
                 className={`nav-link ${active === l.id ? "nav-link--active" : ""}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActive(l.id);
+                  isScrolling.current = true;
+                  const target = document.getElementById(l.id);
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth" });
+                  }
+                  setTimeout(() => {
+                    isScrolling.current = false;
+                  }, 1000);
+                }}
               >
                 {l.label}
                 {active === l.id && (
@@ -1059,9 +1076,8 @@ const HorizontalProjects = () => {
 
         <div className="hscroll-container">
           <button
-            className={`hscroll-nav hscroll-nav--left ${
-              !canScrollLeft ? "hscroll-nav--disabled" : ""
-            }`}
+            className={`hscroll-nav hscroll-nav--left ${!canScrollLeft ? "hscroll-nav--disabled" : ""
+              }`}
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
             aria-label="Scroll left"
@@ -1100,9 +1116,8 @@ const HorizontalProjects = () => {
           </div>
 
           <button
-            className={`hscroll-nav hscroll-nav--right ${
-              !canScrollRight ? "hscroll-nav--disabled" : ""
-            }`}
+            className={`hscroll-nav hscroll-nav--right ${!canScrollRight ? "hscroll-nav--disabled" : ""
+              }`}
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
             aria-label="Scroll right"
@@ -1114,6 +1129,57 @@ const HorizontalProjects = () => {
     </section>
   );
 };
+
+/* ═══════════════════════════════════════════
+   WORK EXPERIENCE TIMELINE
+   ═══════════════════════════════════════════ */
+const Experience = () => (
+  <section id="experience" className="section">
+    <div className="container">
+      <Reveal>
+        <p className="section-tag">
+          <Briefcase size={14} /> experience
+        </p>
+        <h2 className="section-title">Work Experience</h2>
+      </Reveal>
+      <div className="timeline">
+        {[
+          {
+            year: "June 2025 – July 2025",
+            title: "Defence Research and Development Organisation (DRDO)",
+            place: "Internship",
+            detail: "• Worked on a Host-Based Intrusion Detection System (HIDS) using OSSEC.\n• Performed in-depth log analysis and debugging, reducing false positives by ~20% and improving detection accuracy.\n• Developed custom OSSEC rules, increasing detection coverage for suspicious activities by ~15–20%.",
+          },
+        ].map((item, i) => (
+          <Reveal key={i} delay={i * 0.12}>
+            <div className="tl-item">
+              <div className="tl-dot"></div>
+              <TiltCard className="tl-card">
+                <span className="tl-year">{item.year}</span>
+                <h3>{item.title}</h3>
+                {item.place && <p className="tl-place">{item.place}</p>}
+                {item.detail && (
+                  <p className="tl-detail" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, marginTop: "8px", color: "var(--text)", fontWeight: 500 }}>
+                    {item.detail}
+                  </p>
+                )}
+                {item.chips && (
+                  <div className="tl-chips">
+                    {item.chips.map((c) => (
+                      <span key={c} className="tl-chip">
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </TiltCard>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 /* ═══════════════════════════════════════════
    EDUCATION TIMELINE
@@ -1130,8 +1196,13 @@ const Education = () => (
       <div className="timeline">
         {[
           {
+            year: "2026",
+            title: "Qualified GATE (CSE/IT)",
+            place: "Graduate Aptitude Test in Engineering",
+          },
+          {
             year: "2023 — 2027",
-            title: "B.Tech — Inormation Technology",
+            title: "B.Tech — Information Technology",
             place: "GGSIPU, New Delhi, India",
             detail: "CGPA: 9 • DSA, DBMS, OS, CN, OOPs",
           },
@@ -1566,6 +1637,7 @@ export default function App() {
         reverse
       />
       <HorizontalProjects />
+      <Experience />
       <Education />
       <Hackathons />
       <Blog />
