@@ -1076,8 +1076,9 @@ const HorizontalProjects = () => {
 
         <div className="hscroll-container">
           <button
-            className={`hscroll-nav hscroll-nav--left ${!canScrollLeft ? "hscroll-nav--disabled" : ""
-              }`}
+            className={`hscroll-nav hscroll-nav--left ${
+              !canScrollLeft ? "hscroll-nav--disabled" : ""
+            }`}
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
             aria-label="Scroll left"
@@ -1116,8 +1117,9 @@ const HorizontalProjects = () => {
           </div>
 
           <button
-            className={`hscroll-nav hscroll-nav--right ${!canScrollRight ? "hscroll-nav--disabled" : ""
-              }`}
+            className={`hscroll-nav hscroll-nav--right ${
+              !canScrollRight ? "hscroll-nav--disabled" : ""
+            }`}
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
             aria-label="Scroll right"
@@ -1148,7 +1150,8 @@ const Experience = () => (
             year: "June 2025 – July 2025",
             title: "Defence Research and Development Organisation (DRDO)",
             place: "Internship",
-            detail: "• Worked on a Host-Based Intrusion Detection System (HIDS) using OSSEC.\n• Performed in-depth log analysis and debugging, reducing false positives by ~20% and improving detection accuracy.\n• Developed custom OSSEC rules, increasing detection coverage for suspicious activities by ~15–20%.",
+            detail:
+              "• Worked on a Host-Based Intrusion Detection System (HIDS) using OSSEC.\n• Performed in-depth log analysis and debugging, reducing false positives by ~20% and improving detection accuracy.\n• Developed custom OSSEC rules, increasing detection coverage for suspicious activities by ~15–20%.",
           },
         ].map((item, i) => (
           <Reveal key={i} delay={i * 0.12}>
@@ -1159,7 +1162,16 @@ const Experience = () => (
                 <h3>{item.title}</h3>
                 {item.place && <p className="tl-place">{item.place}</p>}
                 {item.detail && (
-                  <p className="tl-detail" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6, marginTop: "8px", color: "var(--text)", fontWeight: 500 }}>
+                  <p
+                    className="tl-detail"
+                    style={{
+                      whiteSpace: "pre-wrap",
+                      lineHeight: 1.6,
+                      marginTop: "8px",
+                      color: "var(--text)",
+                      fontWeight: 500,
+                    }}
+                  >
                     {item.detail}
                   </p>
                 )}
