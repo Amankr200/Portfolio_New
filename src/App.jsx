@@ -43,6 +43,7 @@ import {
   Camera,
   ImageIcon,
   Briefcase,
+  Award,
 } from "lucide-react";
 import "./App.css";
 
@@ -264,6 +265,7 @@ const Navbar = () => {
         "projects",
         "experience",
         "education",
+        "certifications",
         "hackathons",
         "blog",
         "contact",
@@ -291,6 +293,7 @@ const Navbar = () => {
     { label: "Projects", id: "projects" },
     { label: "Experience", id: "experience" },
     { label: "Education", id: "education" },
+    { label: "Certifications", id: "certifications" },
     { label: "Hackathons", id: "hackathons" },
     { label: "Blog", id: "blog" },
     { label: "Contact", id: "contact" },
@@ -1396,6 +1399,88 @@ const Hackathons = () => (
 );
 
 /* ═══════════════════════════════════════════
+   CERTIFICATIONS
+   ═══════════════════════════════════════════ */
+const certificationData = [
+  {
+    id: 1,
+    title: "SQL (Intermediate)",
+    issuer: "HackerRank",
+    date: "March 28, 2026",
+    imgSrc: "/certifications/sql-intermediate.png",
+    link: "https://www.hackerrank.com/certificates/5db826f2bcde",
+    color: "#00EA64",
+  },
+];
+
+const Certifications = () => (
+  <section id="certifications" className="section section--dark">
+    <div className="container">
+      <Reveal>
+        <p className="section-tag">
+          <Award size={14} /> certifications
+        </p>
+        <h2 className="section-title">Certifications & Credentials</h2>
+        <p className="section-sub">
+          Validated skills through industry-recognized certifications 🏅
+        </p>
+      </Reveal>
+
+      <div className="cert-grid">
+        {certificationData.map((cert, i) => (
+          <Reveal key={cert.id} delay={i * 0.1}>
+            <TiltCard className="cert-card">
+              <div className="cert-img-wrap" style={{ 
+                width: '100%', 
+                height: '240px', 
+                background: 'var(--bg-2)', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                borderBottom: '1px solid var(--border)', 
+                overflow: 'hidden' 
+              }}>
+                <img
+                  src={cert.imgSrc}
+                  alt={`${cert.title} Certificate`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              <div className="cert-info">
+                <div className="cert-header">
+                  <div
+                    className="cert-icon"
+                    style={{
+                      background: `${cert.color}18`,
+                      color: cert.color,
+                    }}
+                  >
+                    <Award size={22} />
+                  </div>
+                  <div>
+                    <h3 className="cert-title">{cert.title}</h3>
+                    <span className="cert-issuer">{cert.issuer}</span>
+                  </div>
+                </div>
+                <span className="cert-date">{cert.date}</span>
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cert-link"
+                >
+                  <ExternalLink size={14} /> View Certificate
+                </a>
+              </div>
+            </TiltCard>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ═══════════════════════════════════════════
    BLOG
    ═══════════════════════════════════════════ */
 const Blog = () => (
@@ -1651,6 +1736,7 @@ export default function App() {
       <HorizontalProjects />
       <Experience />
       <Education />
+      <Certifications />
       <Hackathons />
       <Blog />
       <Contact />
