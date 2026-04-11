@@ -1411,6 +1411,15 @@ const certificationData = [
     link: "https://www.hackerrank.com/certificates/5db826f2bcde",
     color: "#00EA64",
   },
+  {
+    id: 2,
+    title: "AWS Cloud Practitioner Essentials",
+    issuer: "Amazon Web Services (Coursera)",
+    date: "Apr 4, 2026",
+    imgSrc: "/certifications/aws-cloud-practitioner.jpg",
+    link: "https://www.coursera.org/account/accomplishments/verify/SZ4XJW27IIS4",
+    color: "#FF9900",
+  },
 ];
 
 const Certifications = () => (
@@ -1430,20 +1439,23 @@ const Certifications = () => (
         {certificationData.map((cert, i) => (
           <Reveal key={cert.id} delay={i * 0.1}>
             <TiltCard className="cert-card">
-              <div className="cert-img-wrap" style={{ 
-                width: '100%', 
-                height: '240px', 
-                background: 'var(--bg-2)', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                borderBottom: '1px solid var(--border)', 
-                overflow: 'hidden' 
-              }}>
+              <div
+                className="cert-img-wrap"
+                style={{
+                  width: "100%",
+                  height: "240px",
+                  background: "var(--bg-2)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderBottom: "1px solid var(--border)",
+                  overflow: "hidden",
+                }}
+              >
                 <img
                   src={cert.imgSrc}
                   alt={`${cert.title} Certificate`}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </div>
               <div className="cert-info">
