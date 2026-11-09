@@ -44,6 +44,7 @@ import {
   ImageIcon,
   Briefcase,
   Award,
+  Sparkles,
 } from "lucide-react";
 import "./App.css";
 
@@ -265,6 +266,7 @@ const Navbar = () => {
         "projects",
         "experience",
         "education",
+        "achievements",
         "certifications",
         "hackathons",
         "blog",
@@ -293,6 +295,7 @@ const Navbar = () => {
     { label: "Projects", id: "projects" },
     { label: "Experience", id: "experience" },
     { label: "Education", id: "education" },
+    { label: "Achievements", id: "achievements" },
     { label: "Certifications", id: "certifications" },
     { label: "Hackathons", id: "hackathons" },
     { label: "Blog", id: "blog" },
@@ -376,7 +379,7 @@ const TerminalHero = () => {
       { prefix: "~$", text: " cat skills.txt", delay: 60 },
       {
         prefix: ">",
-        text: " React • Javascript • Node.js • MongoDB",
+        text: " React • Node.js • LangChain/RAG • C++ • Python • SQL",
         delay: 20,
         isOutput: true,
       },
@@ -537,7 +540,7 @@ const TerminalHero = () => {
             >
               <Linkedin size={14} /> LinkedIn
             </a>
-            <a href="mailto:amankumar281023@gmail.com" className="chip">
+            <a href="mailto:kraman102003@gmail.com" className="chip">
               <Mail size={14} /> Email
             </a>
           </motion.div>
@@ -639,17 +642,13 @@ const About = () => {
             <TiltCard className="bento-cell h-full">
               <div className="cell-glow"></div>
               <p className="intro-text">
-                I'm a <strong>B.Tech IT</strong> student From GGSIPU , who fell
-                in love with coding during first year. Since then, I've built
-                full-stack apps, contributed to open source, grinded 500+ DSA
-                problems, and pulled way too many all-nighters. 🌙
+                I'm a <strong>B.Tech IT (2023–2027)</strong> student at <strong>Guru Gobind Singh Indraprastha University (GGSIPU)</strong>, New Delhi, holding a consistent <strong>9.0 CGPA</strong> (Top 15 ranking).
                 <br />
                 <br />
-                I enjoy turning ideas into real, scalable products that solve
-                real-world problems. From designing clean UIs to optimizing
-                backend performance, I love working across the entire stack.
+                I interned at <strong>DRDO</strong> working on Host-Based Intrusion Detection Systems (OSSEC), qualified <strong>GATE 2026</strong>, solved <strong>500+ LeetCode problems (1826 rating)</strong>, and build full-stack web applications and AI/RAG architectures.
                 <br />
                 <br />
+                Passionate about scalable software engineering, generative AI systems, system design, and open-source contributions.
               </p>
 
               <p className="intro-highlight">
@@ -708,23 +707,23 @@ const About = () => {
             <TiltCard className="bento-cell h-full cell-stats-inner">
               <div className="stat-block">
                 <span className="stat-number">
-                  <Counter target="30" suffix="+" />
-                </span>
-                <span className="stat-text">Projects</span>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-block">
-                <span className="stat-number">
                   <Counter target="500" suffix="+" />
                 </span>
-                <span className="stat-text">DSA Solved</span>
+                <span className="stat-text">LeetCode (1826)</span>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-block">
                 <span className="stat-number">
-                  <Counter target="5" suffix="+" />
+                  <Counter target="10" suffix="+" />
                 </span>
                 <span className="stat-text">Hackathons</span>
+              </div>
+              <div className="stat-divider"></div>
+              <div className="stat-block">
+                <span className="stat-number">
+                  <Counter target="20" suffix="+" />
+                </span>
+                <span className="stat-text">PRs Merged</span>
               </div>
             </TiltCard>
           </motion.div>
@@ -851,20 +850,19 @@ const About = () => {
    ═══════════════════════════════════════════ */
 const skillData = [
   { icon: <Code2 size={22} />, name: "C++", color: "#00599C" },
+  { icon: <Code2 size={22} />, name: "Python", color: "#3776AB" },
   { icon: <Zap size={22} />, name: "JavaScript", color: "#F7DF1E" },
-
   { icon: <Braces size={22} />, name: "React.js", color: "#61DAFB" },
-
   { icon: <Cpu size={22} />, name: "Node.js", color: "#68A063" },
-  { icon: <Layers size={22} />, name: "Express", color: "#888" },
-  { icon: <Database size={22} />, name: "SQL", color: "#336791" },
+  { icon: <Layers size={22} />, name: "Express.js", color: "#888" },
   { icon: <Database size={22} />, name: "MongoDB", color: "#47A248" },
-  { icon: <Database size={22} />, name: "Redis", color: "#DC382D" },
-
-  { icon: <Layers size={22} />, name: "Docker", color: "#2496ED" },
-
-  { icon: <GitBranch size={22} />, name: "Git", color: "#F05032" },
-  { icon: <GitBranch size={22} />, name: "GitHub", color: "#000" },
+  { icon: <Database size={22} />, name: "MySQL / SQL", color: "#336791" },
+  { icon: <Sparkles size={22} />, name: "LangChain", color: "#22c55e" },
+  { icon: <Sparkles size={22} />, name: "LangGraph / RAG", color: "#a855f7" },
+  { icon: <Globe size={22} />, name: "AWS", color: "#FF9900" },
+  { icon: <GitBranch size={22} />, name: "Git & GitHub", color: "#F05032" },
+  { icon: <Terminal size={22} />, name: "Postman", color: "#FF6C37" },
+  { icon: <Layers size={22} />, name: "REST APIs", color: "#38bdf8" },
 ];
 
 const Skills = () => {
@@ -906,6 +904,56 @@ const Skills = () => {
    ═══════════════════════════════════════════ */
 const projectList = [
   {
+    title: "CodeBoard – Developer Portfolio & Global Leaderboard",
+    desc: "MERN-based platform aggregating coding stats for 500+ students across LeetCode, HackerRank, and GeeksForGeeks. Features custom scrapers, Postman-tested REST APIs, automated 6-hour refresh via node-cron, dynamic C Score ranking algorithm, multi-parameter leaderboard filtering, and a Gemini AI-powered personalized coding coach.",
+    tags: [
+      "React.js",
+      "Node.js",
+      "MongoDB",
+      "Recharts",
+      "Axios",
+      "Node-cron",
+      "Postman",
+      "Gemini AI",
+    ],
+    github: "https://github.com/Amankr200/CodeBoard",
+    live: "https://codeboard-silk.vercel.app/",
+    color: "#3b82f6",
+    emoji: "🏆",
+  },
+  {
+    title: "Ask Your Notes – Retrieval-Augmented Generation (RAG) System",
+    desc: "End-to-end RAG application in Python to query lecture PDFs with verifiable [file, p.X] citations. Implemented sliding-window chunking (500 chars, 80 overlap) with all-MiniLM-L6-v2 embeddings, FAISS IndexFlatL2 cosine search, strict Gemini API prompt-injection guardrails, and an excerpt inspector achieving 100% Hit Rate @ 4 and 1.0 MRR.",
+    tags: [
+      "Python",
+      "Streamlit",
+      "FAISS",
+      "Gemini API",
+      "SentenceTransformers",
+      "PyPDF",
+      "RAG",
+    ],
+    github: "https://github.com/Amankr200/Ask-Your-Notes",
+    live: "https://github.com/Amankr200/Ask-Your-Notes",
+    color: "#8b5cf6",
+    emoji: "🤖",
+  },
+  {
+    title: "Walmart Sales Analysis – SQL Exploration & Insights",
+    desc: "Comprehensive SQL analytics over 1,000+ sales transactions across 3 branches. Engineered time_of_day and date attributes, authored 30+ optimized SQL queries analyzing product performance, customer segmentation, VAT, COGS, and gross margin profit lines.",
+    tags: [
+      "SQL",
+      "MySQL",
+      "Data Analytics",
+      "Feature Engineering",
+      "Financial Analysis",
+    ],
+    github: "https://github.com/Amankr200",
+    live: "https://github.com/Amankr200",
+    color: "#0284c7",
+    emoji: "📈",
+  },
+  {
     title: "Collab Docs",
     desc: "Google Docs-style real-time collaborative editor with live cursors, version history, and conflict resolution.",
     tags: ["React", "WebSocket", "Node.js", "Redis"],
@@ -913,24 +961,6 @@ const projectList = [
     live: "https://sync-sphere-docs.vercel.app/",
     color: "#f59e0b",
     emoji: "📝",
-  },
-  {
-    title: "CodeBoard – Developer Portfolio & Global Leaderboard",
-    desc: "MERN-based platform aggregating real-time coding stats for 500+ students across LeetCode, CodeChef, Codeforces, and GeeksforGeeks. Features a custom C Score ranking algorithm, automated 6-hour data sync, and an interactive multi-filter leaderboard dashboard.",
-    tags: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "JWT",
-      "Recharts",
-      "Axios",
-      "Node-cron",
-    ],
-    github: "https://github.com/Amankr200/CodeBoard",
-    live: "https://codeboard-silk.vercel.app/",
-    color: "#3b82f6",
-    emoji: "🏆",
   },
   {
     title: "GRC Guard",
@@ -941,50 +971,19 @@ const projectList = [
     color: "#10b981",
     emoji: "🔐",
   },
-
-  {
-    title: "FinFolio ",
-    desc: "A Personal Finance Tracker",
-    tags: [
-      "Tailwind CSS",
-      " React.js",
-      " Firebase (Authentication & Firestore)",
-      "Chart.js",
-    ],
-    github:
-      "https://github.com/Amankr200/FinFolio---Your-Presonal-Finance-Webapp",
-    live: "https://finfolio.netlify.app/",
-    color: "#ec4899",
-    emoji: "💰",
-  },
   {
     title: "AI Travel Planner",
-    desc: "Your personal trip planner and travel curator, creating custom itineraries tailored to your interests and budget.",
+    desc: "Personal trip planner and travel curator creating custom itineraries tailored to interests and budget with Gemini and Google Places API.",
     tags: [
       "Tailwind CSS",
-      " React.js",
-      " Gemini API",
+      "React.js",
+      "Gemini API",
       "Google Places API",
-      "Google Authentication",
     ],
     github: "https://github.com/Amankr200/AI-TRAVEL-PLANNER",
     live: "https://ai-travel-planner-aman.netlify.app/",
     color: "#b5bacf",
     emoji: "✈️",
-  },
-  {
-    title: "Structify DSA Visualizer",
-    desc: "Interactive visualizer for Data Structures and Algorithms with step-by-step animations and explanations.",
-    tags: [
-      "Tailwind CSS",
-      " React.js",
-      " Gemini API",
-      "JavaScript Algorithm Implementations",
-    ],
-    github: "https://github.com/Amankr200/structify-dsa-visualizer",
-    live: "https://structify-dsa-visualizer.netlify.app/",
-    color: "#c3a999",
-    emoji: "📊",
   },
 ];
 
@@ -1068,7 +1067,7 @@ const HorizontalProjects = () => {
   return (
     <section id="projects" className="hscroll-section" ref={containerRef}>
       <div className="hscroll-sticky">
-        <div className="container">
+        <div className="container hscroll-header">
           <Reveal>
             <p className="section-tag">
               <Folder size={14} /> my_projects
@@ -1079,9 +1078,8 @@ const HorizontalProjects = () => {
 
         <div className="hscroll-container">
           <button
-            className={`hscroll-nav hscroll-nav--left ${
-              !canScrollLeft ? "hscroll-nav--disabled" : ""
-            }`}
+            className={`hscroll-nav hscroll-nav--left ${!canScrollLeft ? "hscroll-nav--disabled" : ""
+              }`}
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
             aria-label="Scroll left"
@@ -1120,9 +1118,8 @@ const HorizontalProjects = () => {
           </div>
 
           <button
-            className={`hscroll-nav hscroll-nav--right ${
-              !canScrollRight ? "hscroll-nav--disabled" : ""
-            }`}
+            className={`hscroll-nav hscroll-nav--right ${!canScrollRight ? "hscroll-nav--disabled" : ""
+              }`}
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
             aria-label="Scroll right"
@@ -1150,11 +1147,12 @@ const Experience = () => (
       <div className="timeline">
         {[
           {
-            year: "June 2025 – July 2025",
+            year: "Jun 2025 – Jul 2025",
             title: "Defence Research and Development Organisation (DRDO)",
-            place: "Internship",
+            place: "Software Development Intern • New Delhi",
             detail:
-              "• Worked on a Host-Based Intrusion Detection System (HIDS) using OSSEC.\n• Performed in-depth log analysis and debugging, reducing false positives by ~20% and improving detection accuracy.\n• Developed custom OSSEC rules, increasing detection coverage for suspicious activities by ~15–20%.",
+              "• Worked on a Host-Based Intrusion Detection System (HIDS) using OSSEC.\n• Performed in-depth log analysis and debugging, reducing false positives by ~20% and improving detection accuracy.\n• Developed custom OSSEC rules, increasing detection coverage for suspicious activities by ~15%.\n• Worked in a Linux environment using shell commands and log files for troubleshooting.",
+            chips: ["OSSEC", "HIDS", "Linux", "Shell Scripting", "Log Analysis", "Cybersecurity"],
           },
         ].map((item, i) => (
           <Reveal key={i} delay={i * 0.12}>
@@ -1211,32 +1209,25 @@ const Education = () => (
       <div className="timeline">
         {[
           {
-            year: "2026",
-            title: "Qualified GATE (CSE/IT)",
-            place: "Graduate Aptitude Test in Engineering",
-          },
-          {
             year: "2023 — 2027",
             title: "B.Tech — Information Technology",
-            place: "GGSIPU, New Delhi, India",
-            detail: "CGPA: 9 • DSA, DBMS, OS, CN, OOPs",
-          },
-          {
-            year: "Certifications",
-            title: "Online Learning",
-            chips: ["Postman Student Expert", "HackerRank"],
+            place: "Guru Gobind Singh Indraprastha University (GGSIPU), New Delhi",
+            detail: "CGPA: 9.0 • Top 15 in Department • Core: DSA, OOPs, DBMS, CN, Software Engineering",
+            chips: ["CGPA: 9.0", "Top 15 Department Rank"],
           },
           {
             year: "2020 — 2022",
-            title: "Senior Secondary (XII)",
-            place: "Notre Dame School, New Delhi, India",
-            detail: "90.2% • PCM ",
+            title: "C.B.S.E. (Class XII) — Senior Secondary",
+            place: "Notre Dame School, Delhi",
+            detail: "Percentage: 90.2% • Physics, Chemistry, Mathematics (PCM)",
+            chips: ["Score: 90.2%"],
           },
           {
-            year: "2020 — 2022",
-            title: "Secondary (X)",
-            place: "Notre Dame School, New Delhi, India",
-            detail: "94%",
+            year: "2019 — 2020",
+            title: "C.B.S.E. (Class X) — Secondary",
+            place: "Notre Dame School, Delhi",
+            detail: "Percentage: 94%",
+            chips: ["Score: 94%"],
           },
         ].map((item, i) => (
           <Reveal key={i} delay={i * 0.12}>
@@ -1399,6 +1390,119 @@ const Hackathons = () => (
 );
 
 /* ═══════════════════════════════════════════
+   ACHIEVEMENTS
+   ═══════════════════════════════════════════ */
+const academicAchievements = [
+  {
+    title: "Qualified GATE 2026",
+    sub: "Computer Science and Information Technology",
+    desc: "Demonstrated strong foundations in Data Structures, Algorithms, OS, DBMS, Networks, and Theory of Computation.",
+    tag: "National Exam",
+  },
+  {
+    title: "All India Rank 35",
+    sub: "ZS Campus Beats Challenge",
+    desc: "Secured AIR 35 as a team competing against top engineering colleges across the nation.",
+    tag: "National Competition",
+  },
+  {
+    title: "10+ Hackathons Competed",
+    sub: "National & College Level",
+    desc: "Built full-stack prototypes, solved real problems under 24-48h hack sprints.",
+    tag: "Innovation",
+  },
+  {
+    title: "Top 15 Department Rank (CGPA 9.0)",
+    sub: "GGSIPU — Information Technology",
+    desc: "Consistently maintained high academic distinction across 6 semesters.",
+    tag: "Academic Distinction",
+  },
+  {
+    title: "National Service Scheme (NSS)",
+    sub: "BPIT Chapter",
+    desc: "Responsible for society operations, community outreach, and social drive logistics.",
+    tag: "Leadership",
+  },
+];
+
+const programmingAchievements = [
+  {
+    title: "500+ LeetCode Solved",
+    sub: "Contest Rating: 1,826",
+    desc: "High consistency solving complex medium/hard problems covering Dynamic Programming, Graphs, and Trees.",
+    tag: "LeetCode",
+    link: "https://leetcode.com",
+  },
+  {
+    title: "CodeChef Rating: 1,472",
+    sub: "Active Competitive Programmer",
+    desc: "Participated in timed algorithmic contests solving challenges under tight constraints.",
+    tag: "CodeChef",
+    link: "https://www.codechef.com",
+  },
+  {
+    title: "Hacktoberfest & GSSoC Contributor",
+    sub: "Rank 506 / 17,000+ Participants",
+    desc: "20 PRs successfully merged in reputed open-source repositories; earned 6 achievement badges.",
+    tag: "Open Source",
+  },
+];
+
+const Achievements = () => (
+  <section id="achievements" className="section">
+    <div className="container">
+      <Reveal>
+        <p className="section-tag">
+          <Trophy size={14} /> honors_and_awards
+        </p>
+        <h2 className="section-title">Key Achievements</h2>
+        <p className="section-sub">
+          Academic excellence, competitive programming milestones, and open-source contributions.
+        </p>
+      </Reveal>
+
+      {/* Academic Honors */}
+      <Reveal delay={0.1}>
+        <h3 className="achievements-category-title">
+          <GraduationCap size={20} /> Academic & Competition Honors
+        </h3>
+      </Reveal>
+      <div className="achievements-grid">
+        {academicAchievements.map((item, i) => (
+          <Reveal key={i} delay={i * 0.08}>
+            <TiltCard className="achievement-card">
+              <div className="achievement-tag">{item.tag}</div>
+              <h4 className="achievement-title">{item.title}</h4>
+              <p className="achievement-sub">{item.sub}</p>
+              <p className="achievement-desc">{item.desc}</p>
+            </TiltCard>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* Programming & Open Source */}
+      <Reveal delay={0.2}>
+        <h3 className="achievements-category-title" style={{ marginTop: "3rem" }}>
+          <Code2 size={20} /> Competitive Programming & Open Source
+        </h3>
+      </Reveal>
+      <div className="achievements-grid">
+        {programmingAchievements.map((item, i) => (
+          <Reveal key={i} delay={i * 0.08}>
+            <TiltCard className="achievement-card">
+              <div className="achievement-tag achievement-tag--code">{item.tag}</div>
+              <h4 className="achievement-title">{item.title}</h4>
+              <p className="achievement-sub">{item.sub}</p>
+              <p className="achievement-desc">{item.desc}</p>
+            </TiltCard>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ═══════════════════════════════════════════
    CERTIFICATIONS
    ═══════════════════════════════════════════ */
 const certificationData = [
@@ -1415,9 +1519,9 @@ const certificationData = [
     id: 2,
     title: "AWS Cloud Practitioner Essentials",
     issuer: "Amazon Web Services (Coursera)",
-    date: "Apr 4, 2026",
+    date: "April 2026",
     imgSrc: "/certifications/aws-cloud-practitioner.jpg",
-    link: "https://www.coursera.org/account/accomplishments/verify/SZ4XJW27IIS4",
+    link: "https://coursera.org/verify/SZ4XJW27II54",
     color: "#FF9900",
   },
 ];
@@ -1439,23 +1543,20 @@ const Certifications = () => (
         {certificationData.map((cert, i) => (
           <Reveal key={cert.id} delay={i * 0.1}>
             <TiltCard className="cert-card">
-              <div
-                className="cert-img-wrap"
-                style={{
-                  width: "100%",
-                  height: "240px",
-                  background: "var(--bg-2)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderBottom: "1px solid var(--border)",
-                  overflow: "hidden",
-                }}
-              >
+              <div className="cert-img-wrap" style={{
+                width: '100%',
+                height: '240px',
+                background: 'var(--bg-2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottom: '1px solid var(--border)',
+                overflow: 'hidden'
+              }}>
                 <img
                   src={cert.imgSrc}
                   alt={`${cert.title} Certificate`}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
               <div className="cert-info">
@@ -1651,10 +1752,10 @@ const Contact = () => {
               <TiltCard className="aside-card">
                 <h4>Or find me here</h4>
                 <a
-                  href="mailto:amankumar281023@gmail.com"
+                  href="mailto:kraman102003@gmail.com"
                   className="aside-link"
                 >
-                  <Mail size={16} /> amankumar281023@gmail.com
+                  <Mail size={16} /> kraman102003@gmail.com
                 </a>
                 <a
                   href="https://www.linkedin.com/in/aman-kumar-india/"
@@ -1748,6 +1849,7 @@ export default function App() {
       <HorizontalProjects />
       <Experience />
       <Education />
+      <Achievements />
       <Certifications />
       <Hackathons />
       <Blog />
